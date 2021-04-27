@@ -1,6 +1,6 @@
-package time;
+package test.time;
 
-import static time.TimeUnit.Nanosec;
+import static test.time.TimeUnit.Nanosec;
 
 public class Timer implements ITimer{
 
@@ -10,7 +10,7 @@ public class Timer implements ITimer{
 
     /**
      * Initialize the timer and start it (if reset is necessary, call start again)
-     * @param unit Object will display the time based on this choice
+     * @param unit Object will display the test.time based on this choice
      */
     public Timer(TimeUnit unit){
         this.unit = unit;
@@ -31,7 +31,7 @@ public class Timer implements ITimer{
         elapsedTime = 0;
         totalTime = 0;
         clockPaused = clockStopped = false;
-        // Make sure that time spent in function call is not counted
+        // Make sure that test.time spent in function call is not counted
         timeLastOverride = System.nanoTime();
     }
 
@@ -42,7 +42,7 @@ public class Timer implements ITimer{
         if(!clockStopped && !clockPaused){
             totalTime += currentTime - timeLastOverride;
         }
-        // Else stop regardless and return previously stored time
+        // Else stop regardless and return previously stored test.time
         clockStopped = true;
         return totalTime * unit.getScaleFactor();
     }
@@ -56,12 +56,12 @@ public class Timer implements ITimer{
 
         long currentTime = System.nanoTime();
         if(clockPaused){
-            // If clock paused, don't add up any time to totalTime
+            // If clock paused, don't add up any test.time to totalTime
             clockPaused = false;
         }else{
             totalTime += currentTime - timeLastOverride;
         }
-        // Make sure that time spent in function call is not counted
+        // Make sure that test.time spent in function call is not counted
         timeLastOverride = System.nanoTime();
     }
 
@@ -70,7 +70,7 @@ public class Timer implements ITimer{
         long currentTime = System.nanoTime();
 
         if(!clockPaused && !clockStopped){
-            // Pause clock and compute new elapsed time value
+            // Pause clock and compute new elapsed test.time value
             clockPaused = true;
             elapsedTime = currentTime - timeLastOverride;
             totalTime += elapsedTime;

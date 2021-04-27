@@ -1,11 +1,11 @@
-package benchmark.cpu;
+package test.benchmark.cpu;
 
-import benchmark.IBenchmark;
+import test.benchmark.IBenchmark;
 
 public class EmptyBench implements IBenchmark {
     @Override
     public void initialize(Object... params) {
-        
+
     }
 
     @Override
