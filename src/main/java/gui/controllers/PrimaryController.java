@@ -21,6 +21,6 @@ public class PrimaryController implements Initializable {
 
     public void secondaryButtonClicked()
     {
-        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.SECONDARY);
+        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.START_PAGE);
     }
 }

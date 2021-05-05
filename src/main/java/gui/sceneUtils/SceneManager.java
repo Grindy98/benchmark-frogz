@@ -15,7 +15,7 @@ public class SceneManager
     public enum SceneType
     {
         PRIMARY,
-        SECONDARY
+        START_PAGE
 
     }
 
@@ -29,7 +29,7 @@ public class SceneManager
 
         // Add lines to have each enum covered
         sceneMap.put(SceneType.PRIMARY, loadScene("/gui/primary.fxml"));
-        sceneMap.put(SceneType.SECONDARY, loadScene("/gui/secondary.fxml"));
+        sceneMap.put(SceneType.START_PAGE, loadScene("/gui/startpage.fxml"));
 
 
 
