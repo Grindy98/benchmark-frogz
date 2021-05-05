@@ -21,6 +21,6 @@ public class SecondaryController implements Initializable {
 
     public void secondaryButtonClicked()
     {
-        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.PRIMARY);
+        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.CHOOSE_BENCH);
     }
 }
