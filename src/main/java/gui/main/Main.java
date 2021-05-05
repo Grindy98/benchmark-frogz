@@ -2,9 +2,6 @@ package gui.main;
 
 import gui.sceneUtils.SceneManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,10 +20,10 @@ public class Main extends Application {
         SceneManager.getInstance();
 
         //Choose first appearing scene
-        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.PRIMARY));
+        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.CHOOSE_BENCH));
 
         stage.setResizable(false);
-        stage.setTitle("WeddApp");
+        stage.setTitle("BenchMark Project");
 
         stage.show();
     }
