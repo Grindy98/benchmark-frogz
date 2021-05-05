@@ -49,10 +49,13 @@ public class StartPageController implements Initializable {
         identifierText.setText(System.getenv("PROCESSOR_IDENTIFIER"));
         architectureText.setText(System.getenv("PROCESSOR_ARCHITECTURE"));
         nrText.setText(System.getenv("NUMBER_OF_PROCESSORS"));
+
+        startButton.setOnAction(e -> Main.getI().changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE));
     }
 
-    public void secondaryButtonClicked()
-    {
-        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.CHOOSE_BENCH);
-    }
+
+//    public void secondaryButtonClicked()
+//    {
+//        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.START_PAGE);
+//    }
 }

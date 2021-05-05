@@ -20,7 +20,7 @@ public class Main extends Application {
         SceneManager.getInstance();
 
         //Choose first appearing scene
-        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.CHOOSE_BENCH));
+        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.START_PAGE));
 
         stage.setResizable(false);
         stage.setTitle("BenchMark Project");
