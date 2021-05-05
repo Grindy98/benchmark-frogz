@@ -14,8 +14,8 @@ public class SceneManager
 {
     public enum SceneType
     {
-        CHOOSE_BENCH,
-        SECONDARY
+        PRIMARY,
+        START_PAGE
 
     }
 
@@ -28,8 +28,8 @@ public class SceneManager
         sceneMap = new EnumMap<>(SceneType.class);
 
         // Add lines to have each enum covered
-        sceneMap.put(SceneType.CHOOSE_BENCH, loadScene("/gui/ChooseBenchHere.fxml"));
-        sceneMap.put(SceneType.SECONDARY, loadScene("/gui/secondary.fxml"));
+        sceneMap.put(SceneType.PRIMARY, loadScene("/gui/primary.fxml"));
+        sceneMap.put(SceneType.START_PAGE, loadScene("/gui/startpage.fxml"));
 
 
 

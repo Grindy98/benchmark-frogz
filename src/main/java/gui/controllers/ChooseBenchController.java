@@ -29,6 +29,6 @@ public class ChooseBenchController implements Initializable {
 
     public void RunBench1SingleButtonClicked()
     {
-        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.SECONDARY);
+        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.START_PAGE);
     }
 }

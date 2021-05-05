@@ -25,6 +25,11 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setTitle("BenchMark Project");
 
+        System.out.println(System.getenv("PROCESSOR_IDENTIFIER"));
+        System.out.println(System.getenv("PROCESSOR_ARCHITECTURE"));
+
+        System.out.println(System.getenv("NUMBER_OF_PROCESSORS"));
+
         stage.show();
     }
     public static Main getI() {
