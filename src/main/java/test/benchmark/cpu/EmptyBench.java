@@ -24,7 +24,17 @@ public class EmptyBench implements IBenchmark {
     }
 
     @Override
+    public void cancel() {
+
+    }
+
+    @Override
     public void clean() {
 
+    }
+
+    @Override
+    public String getResult() {
+        return  "";
     }
 }
