@@ -1,5 +1,6 @@
 package test.implementation;
 
+import test.benchmark.cpu.CPUThreadedSHA256Hash;
 import test.logging.ConsoleLogger;
 import test.logging.ILog;
 import test.logging.TimeUnit;
@@ -21,7 +22,7 @@ public class TestCPUThreadedHashing
         IBenchmark bench = new CPUThreadedLabHash();
 
         //params
-        int maxLength = 7;
+        int maxLength = 6;
         int nThreads = 3;
         //int hashCode = 524381996;	//frodo
         //int hashCode = 276111076;	//akarua, gmogrf
