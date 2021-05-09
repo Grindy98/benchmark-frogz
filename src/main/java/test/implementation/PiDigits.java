@@ -52,7 +52,7 @@ public class PiDigits
 
     public static BigDecimal getPi()
     {
-        return getArcsin(10000).multiply(new BigDecimal("6"));
+        return getArcsin(100).multiply(new BigDecimal("6"));
     }
 
     public static void main(String[] args) {
