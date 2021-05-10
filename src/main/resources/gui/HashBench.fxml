@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<SplitPane dividerPositions="0.5" prefHeight="669.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.HashBenchController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Text layoutX="97.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hash 1" textAlignment="CENTER" wrappingWidth="168.80340576171875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER" layoutX="-1.0" layoutY="103.0" prefHeight="368.0" prefWidth="363.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="input string">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Text>
+                  <TextField />
+                  <Region prefHeight="73.0" prefWidth="363.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Results">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="hash">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label text="value">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="246.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Time">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label text="value">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Text layoutX="97.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hash 2" textAlignment="CENTER" wrappingWidth="168.80340576171875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER" layoutY="103.0" prefHeight="368.0" prefWidth="363.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="input string">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Text>
+                  <TextField />
+                  <Region prefHeight="73.0" prefWidth="363.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Results">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="hash">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label text="value">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="246.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Time">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label text="value">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
