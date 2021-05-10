@@ -16,7 +16,9 @@ public class SceneManager
     {
 
         START_PAGE,
-        OPTIONS_PAGE
+        OPTIONS_PAGE,
+        HASH_PAGE,
+        PI_PAGE
 
     }
 
@@ -31,6 +33,8 @@ public class SceneManager
         // Add lines to have each enum covered
         sceneMap.put(SceneType.OPTIONS_PAGE, loadScene("/gui/ChooseBenchHere.fxml"));
         sceneMap.put(SceneType.START_PAGE, loadScene("/gui/startpage.fxml"));
+        sceneMap.put(SceneType.HASH_PAGE, loadScene("/gui/HashBench.fxml"));
+        sceneMap.put(SceneType.PI_PAGE, loadScene("/gui/PiBench.fxml"));
 
 
 

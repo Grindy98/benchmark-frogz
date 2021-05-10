@@ -14,21 +14,26 @@ import javafx.scene.control.Button;
 public class ChooseBenchController implements Initializable {
 
     @FXML
-    private Button RunBench1Single;
+    private Button RunBenchHashSingle;
     @FXML
-    private Button RunBench1Multi;
+    private Button RunBenchHashMulti;
     @FXML
-    private Button RunBench2Single;
+    private Button RunBenchPiSingle;
     @FXML
-    private Button RunBench2Multi;
+    private Button RunBenchPiMulti;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        RunBench1Single.setOnAction(e -> RunBench1SingleButtonClicked() );
+        RunBenchHashSingle.setOnAction(e -> RunBenchHashSingleButtonClicked());
+        RunBenchPiSingle.setOnAction(e -> RunBenchPiSingleButtonPressed());
     }
 
-    public void RunBench1SingleButtonClicked()
+    public void RunBenchHashSingleButtonClicked()
     {
-        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.START_PAGE);
+        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.HASH_PAGE);
+    }
+
+    public void RunBenchPiSingleButtonPressed(){
+        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.PI_PAGE);
     }
 }
