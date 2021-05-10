@@ -9,18 +9,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class SecondaryController implements Initializable {
+public class ChooseBenchController implements Initializable {
 
     @FXML
-    private Button secondaryButton;
+    private Button primaryButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        secondaryButton.setOnAction(e -> secondaryButtonClicked() );
+        primaryButton.setOnAction(e -> secondaryButtonClicked() );
     }
 
     public void secondaryButtonClicked()
     {
-        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.PRIMARY);
+        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.SECONDARY);
     }
 }
