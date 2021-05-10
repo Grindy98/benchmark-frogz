@@ -12,5 +12,5 @@ module test {
     exports test.implementation;
     exports test.benchmark;
     exports test.benchmark.cpu;
-    exports gui.main to javafx.graphics;
+    exports gui.main;
 }
