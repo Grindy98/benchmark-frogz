@@ -78,7 +78,7 @@ public class HashBenchController implements Initializable {
         log.write("Result is", bench.getResult());
 
         hSimpleTimeLabel.setText(String.valueOf(TimeUnit.toTimeUnit((long) time, timeUnit)));
-        hSimpleValueLabel.setText(bench.getResult());
+        //hSimpleValueLabel.setText(bench.getResult());
 
         //cleanup
         bench.clean();
