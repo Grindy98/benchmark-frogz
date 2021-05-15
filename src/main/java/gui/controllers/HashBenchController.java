@@ -2,6 +2,9 @@ package gui.controllers;
 
 import gui.main.Main;
 import gui.sceneUtils.SceneManager;
+import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,6 +20,7 @@ import test.time.Timer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
 
 public class HashBenchController implements Initializable {
 
@@ -39,26 +43,41 @@ public class HashBenchController implements Initializable {
     @FXML
     private Label h256TimeLabel;
 
+    private IBenchmark bench;
+    private BooleanProperty isRunning;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        isRunning = new SimpleBooleanProperty(false);
         backButton.setOnAction(e -> backButtonPressed());
-        runSimpleButton.setOnAction(e -> runSimpleButtonPressed());
+        runSimpleButton.setOnAction(e -> {
+            // Run async
+            CompletableFuture<Double> res = CompletableFuture.supplyAsync(this::runSimpleButtonPressed);
+            res.thenAccept(time ->{
+                Platform.runLater(()->{
+                    endBenchmark(time);
+                });
+            });
+        });
+        runSimpleButton.disableProperty().bind(isRunning);
+        backButton.disableProperty().bind(isRunning);
+        run256Button.disableProperty().bind(isRunning);
+        hashSimpleTF.disableProperty().bind(isRunning);
+        hash256TF.disableProperty().bind(isRunning);
     }
 
     private void backButtonPressed(){
         Main.getI().changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE);
     }
 
-    private void runSimpleButtonPressed(){
+    private double runSimpleButtonPressed(){
+        //set to running
+        isRunning.setValue(true);
         //init
-        ILog log = new ConsoleLogger(); // new FileLogger("bench.log");
         ITimer timer = new Timer();
-        TimeUnit timeUnit = TimeUnit.Milli;
 
         //benchmark
-        IBenchmark bench = new CPUThreadedLabHash();
+        bench = new CPUThreadedLabHash();
 
         //params
         int maxLength = 6;
@@ -71,8 +90,13 @@ public class HashBenchController implements Initializable {
         System.out.println("Cracking hash " + hashCode);
         timer.start();
         bench.run(maxLength, nThreads, hashCode);
-        double time = timer.stop();
+        return timer.stop();
+    }
 
+    private void endBenchmark(double time){
+        ILog log = new ConsoleLogger(); // new FileLogger("bench.log");
+
+        TimeUnit timeUnit = TimeUnit.Milli;
         //display status
         log.writeTime("Finished in", (long) time, timeUnit);
         log.write("Result is", bench.getResult());
@@ -83,5 +107,6 @@ public class HashBenchController implements Initializable {
         //cleanup
         bench.clean();
         log.close();
+        isRunning.setValue(false);
     }
 }
