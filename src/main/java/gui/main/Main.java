@@ -3,6 +3,11 @@ package gui.main;
 import gui.sceneUtils.SceneManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import test.benchmark.IBenchmark;
+import test.benchmark.cpu.PiBenchOptimized;
+import test.time.ITimer;
+import test.time.TimeUnit;
+import test.time.Timer;
 
 import java.io.IOException;
 
@@ -25,11 +30,13 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setTitle("BenchMark Project");
 
-        System.out.println(System.getenv("PROCESSOR_IDENTIFIER"));
-        System.out.println(System.getenv("PROCESSOR_ARCHITECTURE"));
-
-        System.out.println(System.getenv("NUMBER_OF_PROCESSORS"));
-
+        IBenchmark bench = new PiBenchOptimized();
+        bench.initialize();
+        ITimer timer = new Timer(TimeUnit.Millisec);
+        timer.start();
+        bench.run(1, 2000);
+        timer.stop();
+        System.out.println(timer.stop());
         stage.show();
     }
     public static Main getI() {

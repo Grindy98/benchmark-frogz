@@ -1,6 +1,11 @@
 package test.benchmark.cpu;
 
 import test.benchmark.IBenchmark;
+import test.logging.ConsoleLogger;
+import test.logging.ILog;
+import test.logging.TimeUnit;
+import test.time.ITimer;
+import test.time.Timer;
 
 public class PiBench implements IBenchmark {
     private String result;
@@ -18,7 +23,20 @@ public class PiBench implements IBenchmark {
 
     @Override
     public void run() {
+        //init
+        ILog log = new ConsoleLogger(); // new FileLogger("bench.log");
+        ITimer timer = new Timer();
+        TimeUnit timeUnit = TimeUnit.Milli;
 
+        //benchmark
+        IBenchmark bench = new CPUThreadedLabHash();
+
+        //run
+        timer.start();
+
+
+
+        double time = timer.stop();
     }
 
     @Override
