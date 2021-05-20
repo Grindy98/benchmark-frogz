@@ -33,6 +33,8 @@ public class PiDigitsOptimized {
         timer.start();
         bench.run(noOfThreads, iterations);
         runningTime = timer.stop();
+        logger.write("PiDigitsOptimized with iter ", iterations, " threads " + noOfThreads);
+        logger.write("\t time: ", getRunningTime(), "\n\tscore: ", getScore(), "\n");
     }
 
     public double getRunningTime() {
@@ -40,6 +42,6 @@ public class PiDigitsOptimized {
     }
 
     public double getScore(){
-        return iterations / runningTime / Math.log(noOfThreads);
+        return iterations / runningTime / Math.log(noOfThreads + 1);
     }
 }

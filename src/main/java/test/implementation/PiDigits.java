@@ -32,6 +32,8 @@ public class PiDigits
         timer.start();
         bench.run(noOfThreads, iterations);
         runningTime = timer.stop();
+        logger.write("PiDigits with iter ", iterations, " threads " + noOfThreads);
+        logger.write("\t time: ", getRunningTime(), "\n\tscore: ", getScore(), "\n");
     }
 
     public double getRunningTime() {
@@ -39,6 +41,6 @@ public class PiDigits
     }
 
     public double getScore(){
-        return iterations / runningTime / Math.log(noOfThreads);
+        return iterations / runningTime / Math.log(noOfThreads + 1);
     }
 }

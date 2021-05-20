@@ -53,7 +53,6 @@ public class PiBench implements IBenchmark {
         }
 
         result = finalSum.get().multiply(new BigDecimal("6"));
-        System.out.println(result);
     }
 
     @Override

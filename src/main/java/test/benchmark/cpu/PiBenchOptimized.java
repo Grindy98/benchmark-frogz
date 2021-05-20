@@ -63,8 +63,6 @@ public class PiBenchOptimized implements IBenchmark {
         BigDecimal one = new BigDecimal("1");
         BigDecimal inversedSum = one.divide(finalSum.get(), MathContext.DECIMAL128);
         result = C.multiply(inversedSum);
-
-        System.out.println(result);
     }
 
     @Override
