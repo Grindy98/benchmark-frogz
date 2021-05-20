@@ -77,7 +77,6 @@ public class CPUThreadedSHA256Hash implements  IBenchmark{
         {
             //TODO maybe add sleep(1)
         }
-
         System.out.println("Running done!");
     }
 
