@@ -49,17 +49,6 @@ public class CPUThreadedSHA256Hash implements  IBenchmark{
         ExecutorService executor = Executors.newFixedThreadPool(nThreads);
         HashManager hasher = new HashManager();
 
-        //TODO remove
-        System.out.println("Ready! (" + nThreads + ") Enter any string to start...");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        try {
-            String ceva = reader.readLine();
-        } catch (IOException e) {
-            System.out.println("Starting error");
-            e.printStackTrace();
-        }
-        System.out.println("Starting...");
 
 
         //spawn all n threads
@@ -75,7 +64,6 @@ public class CPUThreadedSHA256Hash implements  IBenchmark{
         //wait for threads to finish
         while (!executor.isTerminated())
         {
-            //TODO maybe add sleep(1)
         }
 
         System.out.println("Running done!");
