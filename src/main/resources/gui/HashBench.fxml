@@ -63,7 +63,7 @@
       </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <Text layoutX="138.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hash Sha-256" textAlignment="CENTER" wrappingWidth="168.80340576171875">
+            <Text layoutX="138.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hash SHA-256" textAlignment="CENTER" wrappingWidth="168.80340576171875">
                <font>
                   <Font size="24.0" />
                </font>
