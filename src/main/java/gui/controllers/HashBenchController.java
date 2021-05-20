@@ -95,8 +95,6 @@ public class HashBenchController implements Initializable {
         runSimpleButton.disableProperty().bind(isRunning);
         backButton.disableProperty().bind(isRunning);
         run256Button.disableProperty().bind(isRunning);
-        //hashSimpleTF.disableProperty().bind(isRunning);
-        //hash256TF.disableProperty().bind(isRunning);
     }
 
     private void backButtonPressed() {
@@ -162,7 +160,7 @@ public class HashBenchController implements Initializable {
         }
         System.out.println("Total hashes: " + hashes);
         double hashreate=hashes/time;
-        hSimpleTimeLabel.setText(String.valueOf(time)+" "+ "milliseconds");
+        hSimpleTimeLabel.setText(String.valueOf((long)time)+" "+ "milliseconds");
         hsimpleValueLabel.setText(String.valueOf((long)hashreate)+" "+"hashes/millisecond");
 
         //cleanup
@@ -188,7 +186,7 @@ public class HashBenchController implements Initializable {
             hashes = hashes + hashes1;
         }
         double hashreate=hashes/time;
-        h256TimeLabel.setText(String.valueOf(time) + " milliseconds");
+        h256TimeLabel.setText(String.valueOf((long)time) + " milliseconds");
         h256ValueLabel.setText(String.valueOf((long)hashreate)+" hashes/millisecond");
 
 

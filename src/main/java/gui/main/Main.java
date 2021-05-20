@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import test.benchmark.IBenchmark;
 import test.benchmark.cpu.PiBench;
 import test.benchmark.cpu.PiBenchOptimized;
+import test.implementation.LogData;
 import test.time.ITimer;
 import test.time.TimeUnit;
 import test.time.Timer;

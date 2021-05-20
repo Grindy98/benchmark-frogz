@@ -10,7 +10,7 @@ public class FileLogger implements ILog{
     public FileLogger(File file){
         try {
             file.createNewFile();
-            writer = new FileWriter(file);
+            writer = new FileWriter(file, false);
         }catch (IOException e){
             throw new RuntimeException(e.getMessage());
         }
