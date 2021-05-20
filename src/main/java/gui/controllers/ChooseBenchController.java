@@ -26,6 +26,9 @@ public class ChooseBenchController implements Initializable {
     private Button RunBenchPiSingle;
     @FXML
     private Button RunBenchPiMulti;
+    @FXML
+    private Button backButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RunBenchHashSingle.setOnAction(e -> {
@@ -35,8 +38,17 @@ public class ChooseBenchController implements Initializable {
             RunBenchHashMultiButtonClicked();
 
         });
-        RunBenchPiSingle.setOnAction(e -> RunBenchPiSingleButtonPressed());
+        RunBenchPiSingle.setOnAction(e -> RunBenchPiSingleButtonClicked());
+        RunBenchPiMulti.setOnAction(e -> RunBenchPiMultiButtonClicked());
 
+        backButton.setOnAction(e -> {
+            backButtonClicked();
+        });
+
+    }
+
+    private void backButtonClicked(){
+        Main.changeSceneOnMainStage(SceneType.START_PAGE);
     }
 
     public void RunBenchHashSingleButtonClicked() {
@@ -49,10 +61,17 @@ public class ChooseBenchController implements Initializable {
         controllerLogIn.setThreadnumber(4);
         Main.changeSceneOnMainStage(SceneType.HASH_PAGE);
     }
-    
 
-    public void RunBenchPiSingleButtonPressed(){
+    public void RunBenchPiSingleButtonClicked(){
         Main.changeSceneOnMainStage(SceneType.PI_PAGE);
+        PiBenchController controller = SceneManager.getInstance().getController(SceneType.PI_PAGE);
+        controller.setSlidersSingle();
+    }
+
+    public void RunBenchPiMultiButtonClicked(){
+        Main.changeSceneOnMainStage(SceneType.PI_PAGE);
+        PiBenchController controller = SceneManager.getInstance().getController(SceneType.PI_PAGE);
+        controller.setSlidersMulti();
     }
 
 }
