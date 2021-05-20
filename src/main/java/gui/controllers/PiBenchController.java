@@ -37,6 +37,6 @@ public class PiBenchController implements Initializable {
     }
 
     private void backButtonPressed(){
-        Main.getI().changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE);
+        Main.changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE);
     }
 }

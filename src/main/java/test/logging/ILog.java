@@ -3,50 +3,25 @@ package test.logging;
 public interface ILog
 {
     /**
-     * Writes a given string to implementing output stream
-     *
-     * @param string
+     * Write to given medium a value
+     * @param val Value to be written
      */
-    public void write(String string);
+    void write(long val);
 
     /**
-     * Writes a given long value to implementing output stream
-     *
-     * @param value
+     * Write to given medium a string
+     * @param str String to be written
      */
-    public void write(long value);
+    void write(String str);
 
     /**
-     * Writes an array of objects to the implementing output stream. <br>
-     * Calls each object's toString method and delimits them with " ".
-     *
-     * @param values
+     * Write to given medium a list of Objects with ToString
+     * @param params List of objects to be written
      */
-    public void write(Object... values);
+    void write(Object... params);
 
     /**
-     * Writes a long value representing elapsed time to the implementing output
-     * stream. <br>
-     * The time value is converted to the given time unit.
-     *
-     * @param value
-     * @param unit
+     * Function should always be called before an object implementing ILogger goes out of scope<br>
      */
-    public void writeTime(long value, TimeUnit unit);
-
-    /**
-     * Writes a (descriptive) string followed by a long value representing elapsed
-     * time to the implementing output stream. <br>
-     * The time value is converted to the given time unit.
-     *
-     * @param string
-     * @param value
-     * @param unit
-     */
-    public void writeTime(String string, long value, TimeUnit unit);
-
-    /**
-     * Called to close the write stream
-     */
-    public void close();
+    void close();
 }

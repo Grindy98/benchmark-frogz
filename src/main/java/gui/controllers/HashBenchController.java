@@ -1,5 +1,7 @@
 package gui.controllers;
 
+import gui.main.Main;
+import gui.sceneUtils.SceneManager;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -17,8 +19,8 @@ import test.benchmark.cpu.CPUThreadedLabHash;
 import test.benchmark.cpu.CPUThreadedSHA256Hash;
 import test.logging.ConsoleLogger;
 import test.logging.ILog;
-import test.logging.TimeUnit;
 import test.time.ITimer;
+import test.time.TimeUnit;
 import test.time.Timer;
 
 import java.io.IOException;
@@ -70,11 +72,7 @@ public class HashBenchController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isRunning = new SimpleBooleanProperty(false);
         backButton.setOnAction(e -> {
-            try {
-                backButtonPressed();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+            backButtonPressed();
         });
         runSimpleButton.setOnAction(e -> {
             // Run async
@@ -101,25 +99,15 @@ public class HashBenchController implements Initializable {
         //hash256TF.disableProperty().bind(isRunning);
     }
 
-    private void backButtonPressed() throws IOException {
-        Stage stage1=(Stage) runSimpleButton.getScene().getWindow();
-        stage1.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/gui/ChooseBenchHere.fxml"));
-        Parent root = loader.load();
-        ChooseBenchController controllerLogIn = loader.getController();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("BenchMark Project");
-        stage.show();
+    private void backButtonPressed() {
+        Main.changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE);
     }
 
     private double runSimpleButtonPressed(){
         //set to running
         isRunning.setValue(true);
         //init
-        ITimer timer = new Timer();
+        ITimer timer = new Timer(TimeUnit.Millisec);
 
         //benchmark
         bench = new CPUThreadedLabHash();
@@ -139,7 +127,7 @@ public class HashBenchController implements Initializable {
         //set to running
         isRunning.setValue(true);
         //init
-        ITimer timer = new Timer();
+        ITimer timer = new Timer(TimeUnit.Millisec);
 
         //benchmark
         bench = new CPUThreadedSHA256Hash();
@@ -158,9 +146,8 @@ public class HashBenchController implements Initializable {
     private void endBenchmark(double time){
         ILog log = new ConsoleLogger(); // new FileLogger("bench.log");
 
-        TimeUnit timeUnit = TimeUnit.Milli;
         //display status
-        log.writeTime("Finished in", (long) time, timeUnit);
+        log.write("Finished in", (long) time);
         log.write("Result is", bench.getResult());
         int hashes = 0;
         int hashes1 = 1;
@@ -174,9 +161,8 @@ public class HashBenchController implements Initializable {
             hashes = hashes + hashes1;
         }
         System.out.println("Total hashes: " + hashes);
-        double tim=TimeUnit.toTimeUnit((long)time,timeUnit);
-        double hashreate=hashes/tim;
-        hSimpleTimeLabel.setText(String.valueOf(TimeUnit.toTimeUnit((long) time, timeUnit))+" "+ "milliseconds");
+        double hashreate=hashes/time;
+        hSimpleTimeLabel.setText(String.valueOf(time)+" "+ "milliseconds");
         hsimpleValueLabel.setText(String.valueOf((long)hashreate)+" "+"hashes/millisecond");
 
         //cleanup
@@ -187,9 +173,8 @@ public class HashBenchController implements Initializable {
     private void endBenchmark1(double time){
         ILog log = new ConsoleLogger(); // new FileLogger("bench.log");
 
-        TimeUnit timeUnit = TimeUnit.Milli;
         //display status
-        log.writeTime("SHA Finished in", (long) time, timeUnit);
+        log.write("SHA Finished in", time);
         log.write("Result is", bench.getResult());
         int hashes = 0;
         int hashes1 = 1;
@@ -202,10 +187,9 @@ public class HashBenchController implements Initializable {
             }
             hashes = hashes + hashes1;
         }
-        double tim=TimeUnit.toTimeUnit((long)time,timeUnit);
-        double hashreate=hashes/tim;
-        h256TimeLabel.setText(String.valueOf(TimeUnit.toTimeUnit((long) time, timeUnit))+" "+ "milliseconds");
-        h256ValueLabel.setText(String.valueOf((long)hashreate)+" "+"hashes/millisecond");
+        double hashreate=hashes/time;
+        h256TimeLabel.setText(String.valueOf(time) + " milliseconds");
+        h256ValueLabel.setText(String.valueOf((long)hashreate)+" hashes/millisecond");
 
 
         //cleanup

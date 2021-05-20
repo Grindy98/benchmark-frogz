@@ -3,6 +3,7 @@ import javafx.scene.control.PasswordField;
 import test.benchmark.IBenchmark;
 import test.benchmark.cpu.PiBench;
 import test.benchmark.cpu.PiBenchOptimized;
+import test.logging.ILog;
 import test.time.ITimer;
 import test.time.TimeUnit;
 import test.time.Timer;
@@ -16,10 +17,12 @@ public class PiDigits
     double runningTime;
     int noOfThreads;
     int iterations;
+    ILog logger;
 
-    public PiDigits(int noOfThreads, int iterations) {
+    public PiDigits(int noOfThreads, int iterations, ILog logger) {
         this.noOfThreads = noOfThreads;
         this.iterations = iterations;
+        this.logger = logger;
     }
 
     public void measure(){

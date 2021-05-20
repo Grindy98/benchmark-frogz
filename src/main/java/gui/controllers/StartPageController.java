@@ -50,7 +50,7 @@ public class StartPageController implements Initializable {
         architectureText.setText(System.getenv("PROCESSOR_ARCHITECTURE"));
         nrText.setText(System.getenv("NUMBER_OF_PROCESSORS"));
 
-        startButton.setOnAction(e -> Main.getI().changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE));
+        startButton.setOnAction(e -> Main.changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE));
     }
 
 

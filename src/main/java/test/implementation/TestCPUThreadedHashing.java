@@ -3,7 +3,7 @@ package test.implementation;
 import test.benchmark.cpu.CPUThreadedSHA256Hash;
 import test.logging.ConsoleLogger;
 import test.logging.ILog;
-import test.logging.TimeUnit;
+import test.time.TimeUnit;
 import test.time.ITimer;
 import test.time.Timer;
 import test.benchmark.IBenchmark;
@@ -15,8 +15,7 @@ public class TestCPUThreadedHashing
     {
         //init
         ILog log = new ConsoleLogger(); // new FileLogger("bench.log");
-        ITimer timer = new Timer();
-        TimeUnit timeUnit = TimeUnit.Milli;
+        ITimer timer = new Timer(TimeUnit.Millisec);
 
         //benchmark
         IBenchmark bench = new CPUThreadedLabHash();
@@ -35,7 +34,7 @@ public class TestCPUThreadedHashing
         double time = timer.stop();
 
         //display status
-        log.writeTime("Finished in", (long) time, timeUnit);
+        log.write("Finished in", (long) time);
         log.write("Result is", bench.getResult());
 
         //cleanup

@@ -14,11 +14,11 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    private Stage stage;
+    private static Stage stage;
     private static Main instance;
     public static void main(String[] args) { launch(args); }
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
         this.stage = stage;
         instance = this;
 
@@ -33,11 +33,8 @@ public class Main extends Application {
 
         stage.show();
     }
-    public static Main getI() {
-        return instance;
-    }
 
-    public void changeSceneOnMainStage(SceneManager.SceneType sceneType)
+    public static void changeSceneOnMainStage(SceneManager.SceneType sceneType)
     {
         stage.setScene(SceneManager.getInstance().getScene(sceneType));
     }

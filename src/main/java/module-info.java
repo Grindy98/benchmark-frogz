@@ -12,5 +12,6 @@ module test {
     exports test.implementation;
     exports test.benchmark;
     exports test.benchmark.cpu;
+    exports test.logging;
     exports gui.main;
 }
