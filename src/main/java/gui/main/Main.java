@@ -2,9 +2,6 @@ package gui.main;
 
 import gui.sceneUtils.SceneManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,10 +20,15 @@ public class Main extends Application {
         SceneManager.getInstance();
 
         //Choose first appearing scene
-        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.PRIMARY));
+        stage.setScene(SceneManager.getInstance().getScene(SceneManager.SceneType.START_PAGE));
 
         stage.setResizable(false);
-        stage.setTitle("WeddApp");
+        stage.setTitle("BenchMark Project");
+
+        System.out.println(System.getenv("PROCESSOR_IDENTIFIER"));
+        System.out.println(System.getenv("PROCESSOR_ARCHITECTURE"));
+
+        System.out.println(System.getenv("NUMBER_OF_PROCESSORS"));
 
         stage.show();
     }

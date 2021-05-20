@@ -27,7 +27,22 @@ public interface IBenchmark {
     void run(Object...params);
 
     /**
-     * Used to remove unnecessary leftovers - always call when done with the test.benchmark
+     * Stops a benchmark during execution. <br>
+     * Should be checked in the main for-loop, or main thread of the benchmark.
      */
-    void clean();
+    public void cancel();
+
+    /**
+     * Called to explicitly release allocated data. <br>
+     * This call should not be benchmarked.
+     */
+    public void clean();
+
+    /**
+     * Return the result of the benchmark. <br>
+     * This call should not be benchmarked.
+     *
+     * @return
+     */
+    public String getResult();
 }
