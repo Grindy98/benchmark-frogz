@@ -4,6 +4,7 @@ import gui.sceneUtils.SceneManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import test.benchmark.IBenchmark;
+import test.benchmark.cpu.PiBench;
 import test.benchmark.cpu.PiBenchOptimized;
 import test.time.ITimer;
 import test.time.TimeUnit;
@@ -30,13 +31,6 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setTitle("BenchMark Project");
 
-        IBenchmark bench = new PiBenchOptimized();
-        bench.initialize();
-        ITimer timer = new Timer(TimeUnit.Millisec);
-        timer.start();
-        bench.run(1, 2000);
-        timer.stop();
-        System.out.println(timer.stop());
         stage.show();
     }
     public static Main getI() {

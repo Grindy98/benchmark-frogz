@@ -79,7 +79,7 @@ public class PiBenchOptimized implements IBenchmark {
 
     @Override
     public String getResult() {
-        return  "";
+        return  result.toString();
     }
 
     public static BigDecimal fac(BigDecimal n, BigDecimal acc) {
