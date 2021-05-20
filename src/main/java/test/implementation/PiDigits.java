@@ -14,17 +14,28 @@ import java.math.RoundingMode;
 public class PiDigits
 {
     double runningTime;
+    int noOfThreads;
+    int iterations;
 
-    public void measure(int noOfThreads, int iterations){
+    public PiDigits(int noOfThreads, int iterations) {
+        this.noOfThreads = noOfThreads;
+        this.iterations = iterations;
+    }
+
+    public void measure(){
         IBenchmark bench = new PiBench();
         bench.initialize();
         ITimer timer = new Timer(TimeUnit.Millisec);
         timer.start();
-        bench.run(4, 3000);
+        bench.run(noOfThreads, iterations);
         runningTime = timer.stop();
     }
 
     public double getRunningTime() {
         return runningTime;
+    }
+
+    public double getScore(){
+        return iterations / runningTime / Math.log(noOfThreads);
     }
 }
