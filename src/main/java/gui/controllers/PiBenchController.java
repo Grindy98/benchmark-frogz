@@ -2,6 +2,9 @@ package gui.controllers;
 
 import gui.main.Main;
 import gui.sceneUtils.SceneManager;
+import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,6 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import java.text.DecimalFormat;
+import java.util.concurrent.CompletableFuture;
 
 public class PiBenchController implements Initializable {
     @FXML
@@ -50,6 +54,8 @@ public class PiBenchController implements Initializable {
     @FXML
     private Label chudIterLabel;
 
+    private BooleanProperty isRunning;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         backButton.setOnAction(e -> backButtonPressed());
@@ -59,16 +65,31 @@ public class PiBenchController implements Initializable {
         chudSlider.valueProperty().addListener((obs, oldval, newVal) ->
                 chudSlider.setValue(Math.round(newVal.doubleValue())));
 
+        arcsinIterSlider.valueProperty().addListener((obs, oldval, newVal) ->
+                arcsinIterLabel.setText(String.valueOf(Math.round(newVal.intValue()))));
+
+        chudIterSlider.valueProperty().addListener((obs, oldval, newVal) ->
+                chudIterLabel.setText(String.valueOf(Math.round(newVal.intValue()))));
+
         runSimpleButton.setOnAction(e -> {
             runSimpleButtonPressed();
         });
 
         runOptimizedButton.setOnAction(e -> {
-            runOptimizedButtonPressed();
+            // Run async
+            CompletableFuture<PiDigitsOptimized> res = CompletableFuture.supplyAsync(this::runOptimizedButtonPressed);
+            res.thenAccept(param ->{
+                Platform.runLater(()->{
+                    endRunOptimized(param);
+                });
+            });
         });
 
+        isRunning = new SimpleBooleanProperty(false);
 
-
+        backButton.disableProperty().bind(isRunning);
+        runOptimizedButton.disableProperty().bind(isRunning);
+        runSimpleButton.disableProperty().bind(isRunning);
     }
 
     public void setSlidersSingle(){
@@ -87,20 +108,26 @@ public class PiBenchController implements Initializable {
         Main.changeSceneOnMainStage(SceneManager.SceneType.OPTIONS_PAGE);
     }
 
-    private void runSimpleButtonPressed(){
+    private PiDigits runSimpleButtonPressed(){
         ILog log = new ConsoleLogger();
-        PiDigits bench = new PiDigits((int)Math.round(arcsinIterSlider.getValue()), (int)Math.round(arcsinSlider.getValue()), log);
+        PiDigits bench = new PiDigits((int)Math.round(arcsinSlider.getValue()), (int)Math.round(arcsinIterSlider.getValue()), log);
         bench.measure();
-        System.out.println(bench.getScore());
-        simpleDigLabel.setText(String.valueOf(new DecimalFormat("#.##").format(bench.getScore())));
-        simpleTimeLabel.setText(String.valueOf(bench.getRunningTime()));
+        simpleDigLabel.setText((new DecimalFormat("#.##").format(bench.getScore())));
+        simpleTimeLabel.setText((new DecimalFormat("#.##").format(bench.getRunningTime())) + " ms");
+        return bench;
     }
 
-    private void runOptimizedButtonPressed(){
+    private PiDigitsOptimized runOptimizedButtonPressed(){
+        isRunning.setValue(true);
         ILog log = new ConsoleLogger();
-        PiDigitsOptimized bench = new PiDigitsOptimized((int)Math.round(arcsinIterSlider.getValue()), (int)Math.round(arcsinSlider.getValue()), log);
+        PiDigitsOptimized bench = new PiDigitsOptimized((int)Math.round(chudSlider.getValue()), (int)Math.round(chudIterSlider.getValue()), log);
         bench.measure();
-        optimizedTimeLabel.setText(String.valueOf(bench.getRunningTime()));
-        optimizedDigLabel.setText(String.valueOf(new DecimalFormat("#.##").format(bench.getScore())));
+        return bench;
+    }
+
+    private void endRunOptimized(PiDigitsOptimized bench){
+        optimizedTimeLabel.setText((new DecimalFormat("#.##").format(bench.getRunningTime())) + " ms");
+        optimizedDigLabel.setText((new DecimalFormat("#.##").format(bench.getScore())));
+        isRunning.setValue(false);
     }
 }

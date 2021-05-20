@@ -42,6 +42,6 @@ public class PiDigitsOptimized {
     }
 
     public double getScore(){
-        return iterations / runningTime / Math.log(noOfThreads + 1);
+        return iterations / runningTime / Math.log(noOfThreads + 1) * 100;
     }
 }

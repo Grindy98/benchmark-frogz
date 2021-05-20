@@ -33,8 +33,8 @@
                         <Region prefHeight="85.0" prefWidth="81.0" />
                         <AnchorPane prefHeight="38.0" prefWidth="63.0">
                            <children>
-                              <Slider fx:id="arcsinIterSlider" layoutX="-28.0" layoutY="-5.0" majorTickUnit="2000.0" max="10000.0" min="1000.0" prefHeight="38.0" prefWidth="148.0" showTickLabels="true" showTickMarks="true" />
-                              <Label fx:id="arcsinIterLabel" layoutX="32.0" layoutY="40.0" text="Label" />
+                              <Slider fx:id="arcsinIterSlider" layoutX="-28.0" layoutY="-5.0" majorTickUnit="1000.0" max="4000.0" min="1000.0" prefHeight="38.0" prefWidth="148.0" showTickLabels="true" showTickMarks="true" />
+                              <Label fx:id="arcsinIterLabel" layoutX="32.0" layoutY="40.0" text="1000" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -74,7 +74,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="100.0" prefWidth="131.0" />
-                        <Label fx:id="simpleDigLabel" text="value">
+                        <Label fx:id="simpleDigLabel" text="0">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -89,7 +89,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="100.0" prefWidth="131.0" />
-                        <Label fx:id="simpleTimeLabel" text="value">
+                        <Label fx:id="simpleTimeLabel" text="0">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -126,7 +126,7 @@
                         <AnchorPane prefHeight="38.0" prefWidth="63.0">
                            <children>
                               <Slider fx:id="chudIterSlider" layoutX="-60.0" majorTickUnit="499.0" max="1500.0" min="1.0" prefHeight="38.0" prefWidth="148.0" showTickLabels="true" showTickMarks="true" />
-                              <Label fx:id="chudIterLabel" layoutY="41.0" text="Label" />
+                              <Label fx:id="chudIterLabel" layoutY="41.0" text="1" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -166,7 +166,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="100.0" prefWidth="131.0" />
-                        <Label fx:id="optimizedDigLabel" text="value">
+                        <Label fx:id="optimizedDigLabel" text="0">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -181,7 +181,7 @@
                            </font>
                         </Label>
                         <Region prefHeight="100.0" prefWidth="131.0" />
-                        <Label fx:id="optimizedTimeLabel" text="value">
+                        <Label fx:id="optimizedTimeLabel" text="0">
                            <font>
                               <Font size="20.0" />
                            </font>
