@@ -51,6 +51,7 @@ public class ChooseBenchController implements Initializable {
         Parent root = loader.load();
         HashBenchController controllerLogIn = loader.getController();
         controllerLogIn.setThreadnumber(1);
+        //controllerLogIn.setLength(5);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -64,7 +65,8 @@ public class ChooseBenchController implements Initializable {
         loader.setLocation(getClass().getResource("/gui/HashBench.fxml"));
         Parent root = loader.load();
         HashBenchController controllerLogIn = loader.getController();
-        controllerLogIn.setThreadnumber(3);
+        controllerLogIn.setThreadnumber(4);
+        //controllerLogIn.setLength(6);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);

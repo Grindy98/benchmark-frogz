@@ -1,7 +1,5 @@
 package gui.controllers;
 
-import gui.main.Main;
-import gui.sceneUtils.SceneManager;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -58,12 +56,16 @@ public class HashBenchController implements Initializable {
     private IBenchmark bench;
     private BooleanProperty isRunning;
     private int threadnumber;
-    private int lenght=5;
+    private int length = 5;
 
     public void setThreadnumber(int threadnumber) {
         this.threadnumber = threadnumber;
     }
 
+    public void setLength(int length)
+    {
+        this.length = length;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isRunning = new SimpleBooleanProperty(false);
@@ -123,7 +125,7 @@ public class HashBenchController implements Initializable {
         bench = new CPUThreadedLabHash();
 
         //params
-        int maxLength = lenght;
+        int maxLength = length;
         int nThreads = threadnumber;
         int hashCode = 904300281;
 
@@ -143,7 +145,7 @@ public class HashBenchController implements Initializable {
         bench = new CPUThreadedSHA256Hash();
 
         //params
-        int maxLength = lenght;
+        int maxLength = length - 1; //else we wait 90s
         int nThreads = threadnumber;
 
         int hashCode = 904300281;
@@ -160,17 +162,18 @@ public class HashBenchController implements Initializable {
         //display status
         log.writeTime("Finished in", (long) time, timeUnit);
         log.write("Result is", bench.getResult());
-        int hashes=0;
-        int hashes1=1;
-        for(int i=0;i<lenght;i++)
+        int hashes = 0;
+        int hashes1 = 1;
+        for(int i = 1; i <= length; i++)
         {
-            hashes1=1;
-            for(int j=0;j<lenght-i;j++){
-                hashes1=hashes1*26;
+            hashes1 = 1;
+            for(int j = 1; j <= i; j++)
+            {
+                hashes1 = hashes1 * 26;
             }
-            hashes=hashes+hashes1;
+            hashes = hashes + hashes1;
         }
-
+        System.out.println("Total hashes: " + hashes);
         double tim=TimeUnit.toTimeUnit((long)time,timeUnit);
         double hashreate=hashes/tim;
         hSimpleTimeLabel.setText(String.valueOf(TimeUnit.toTimeUnit((long) time, timeUnit))+" "+ "milliseconds");
@@ -186,17 +189,18 @@ public class HashBenchController implements Initializable {
 
         TimeUnit timeUnit = TimeUnit.Milli;
         //display status
-        log.writeTime("Finished in", (long) time, timeUnit);
+        log.writeTime("SHA Finished in", (long) time, timeUnit);
         log.write("Result is", bench.getResult());
-        int hashes=0;
-        int hashes1=1;
-        for(int i=0;i<lenght;i++)
+        int hashes = 0;
+        int hashes1 = 1;
+        for(int i = 1; i < length; i++)     //less for sha, otherwise we wait 90s
         {
-            hashes1=1;
-            for(int j=0;j<lenght-i;j++){
-                hashes1=hashes1*26;
+            hashes1 = 1;
+            for(int j = 1; j <= i; j++)
+            {
+                hashes1 = hashes1 * 26;
             }
-            hashes=hashes+hashes1;
+            hashes = hashes + hashes1;
         }
         double tim=TimeUnit.toTimeUnit((long)time,timeUnit);
         double hashreate=hashes/tim;
