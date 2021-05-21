@@ -27,8 +27,8 @@ public class HashBenchSHA256 {
         timer.start();
         bench.run(length, noOfThreads, 0);
         runningTime = timer.stop();
-        logger.write("HashBench256 with length ", length, " threads " + noOfThreads);
-        logger.write("\t time: ", getRunningTime(), "\n\tscore: ", getScore(), "\n");
+        logger.write("HashBench256 with length ", length, " threads " + noOfThreads,
+                "time: ", getRunningTime(), "score: ", getScore());
     }
 
     public double getRunningTime() {

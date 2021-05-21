@@ -160,8 +160,8 @@ public class HashBenchController implements Initializable {
         }
         System.out.println("Total hashes: " + hashes);
         double hashreate=hashes/time;
-        hSimpleTimeLabel.setText(String.valueOf((long)time)+" "+ "milliseconds");
-        hsimpleValueLabel.setText(String.valueOf((long)hashreate)+" "+"hashes/millisecond");
+        hSimpleTimeLabel.setText(String.valueOf((long)time)+" "+ "ms");
+        hsimpleValueLabel.setText(String.valueOf((long)hashreate)+" "+"hashes/ms");
 
         //cleanup
         bench.clean();
@@ -186,8 +186,8 @@ public class HashBenchController implements Initializable {
             hashes = hashes + hashes1;
         }
         double hashreate=hashes/time;
-        h256TimeLabel.setText(String.valueOf((long)time) + " milliseconds");
-        h256ValueLabel.setText(String.valueOf((long)hashreate)+" hashes/millisecond");
+        h256TimeLabel.setText(String.valueOf((long)time) + " ms");
+        h256ValueLabel.setText(String.valueOf((long)hashreate)+" hashes/ms");
 
 
         //cleanup

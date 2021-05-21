@@ -27,8 +27,8 @@ public class HashBenchLab {
         timer.start();
         bench.run(length, noOfThreads, 0);
         runningTime = timer.stop();
-        logger.write("HashBenchLab with length ", length, " threads " + noOfThreads);
-        logger.write("\t time: ", getRunningTime(), "\n\tscore: ", getScore(), "\n");
+        logger.write("HashBenchLab with length ", length, " threads " + noOfThreads,
+                "time: ", getRunningTime(), "score: ", getScore());
     }
 
     public double getRunningTime() {

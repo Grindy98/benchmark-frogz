@@ -42,7 +42,7 @@ public class LogData {
             a.measure();
         }
         for(int i = 1; i <= 10; i++){
-            HashBenchLab a = new HashBenchLab(i, 3, logger);
+            HashBenchLab a = new HashBenchLab(i, 4, logger);
             a.measure();
         }
         // HashBenchSHA256
@@ -50,8 +50,8 @@ public class LogData {
             HashBenchSHA256 a = new HashBenchSHA256(4, i, logger);
             a.measure();
         }
-        for(int i = 1; i <= 10; i++){
-            HashBenchLab a = new HashBenchLab(i, 3, logger);
+        for(int i = 2; i <= 10; i++){
+            HashBenchSHA256 a = new HashBenchSHA256(i, 4, logger);
             a.measure();
         }
     }
