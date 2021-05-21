@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane dividerPositions="0.5" prefHeight="669.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.HashBenchController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Text layoutX="137.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hash from Lab" textAlignment="CENTER" wrappingWidth="168.80340576171875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER" layoutX="-1.0" layoutY="69.0" prefHeight="402.0" prefWidth="444.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Results">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Hashrate">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label fx:id="hsimpleValueLabel" text="0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="246.0" prefHeight="98.0" prefWidth="336.0">
+                     <children>
+                        <Label text="Time">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label fx:id="hSimpleTimeLabel" text="0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="73.0" prefWidth="363.0" />
+               </children>
+            </VBox>
+            <AnchorPane layoutX="106.0" layoutY="388.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="runSimpleButton" layoutX="60.0" layoutY="77.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="80.0" text="Run" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="47.0" prefWidth="74.0" text="Back" />
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Text layoutX="138.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hash SHA-256" textAlignment="CENTER" wrappingWidth="168.80340576171875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER" layoutY="84.0" prefHeight="387.0" prefWidth="444.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Results">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Hashrate">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label fx:id="h256ValueLabel" text="0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="246.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Time">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="100.0" prefWidth="131.0" />
+                        <Label fx:id="h256TimeLabel" text="0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="73.0" prefWidth="363.0" />
+               </children>
+            </VBox>
+            <AnchorPane layoutX="122.0" layoutY="439.0" prefHeight="165.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="run256Button" layoutX="60.0" layoutY="35.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="80.0" text="Run" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
