@@ -41,6 +41,6 @@ public class PiDigits
     }
 
     public double getScore(){
-        return iterations / runningTime / Math.log(noOfThreads + 1) * 100;
+        return iterations / runningTime / Math.log(noOfThreads + 1);
     }
 }
