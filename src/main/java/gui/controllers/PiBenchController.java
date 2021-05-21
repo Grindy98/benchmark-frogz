@@ -72,7 +72,13 @@ public class PiBenchController implements Initializable {
                 chudIterLabel.setText(String.valueOf(Math.round(newVal.intValue()))));
 
         runSimpleButton.setOnAction(e -> {
-            runSimpleButtonPressed();
+            // Run async
+            CompletableFuture<PiDigits> res = CompletableFuture.supplyAsync(this::runSimpleButtonPressed);
+            res.thenAccept(param ->{
+                Platform.runLater(()->{
+                    endRunSimple(param);
+                });
+            });
         });
 
         runOptimizedButton.setOnAction(e -> {
@@ -109,12 +115,17 @@ public class PiBenchController implements Initializable {
     }
 
     private PiDigits runSimpleButtonPressed(){
+        isRunning.setValue(true);
         ILog log = new ConsoleLogger();
         PiDigits bench = new PiDigits((int)Math.round(arcsinSlider.getValue()), (int)Math.round(arcsinIterSlider.getValue()), log);
         bench.measure();
+        return bench;
+    }
+
+    private void endRunSimple(PiDigits bench){
         simpleDigLabel.setText((new DecimalFormat("#.##").format(bench.getScore())));
         simpleTimeLabel.setText((new DecimalFormat("#.##").format(bench.getRunningTime())) + " ms");
-        return bench;
+        isRunning.setValue(false);
     }
 
     private PiDigitsOptimized runOptimizedButtonPressed(){
